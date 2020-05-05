@@ -4,7 +4,7 @@
 
 {# Method signature #}
 ```php
-{{ method.parent.name }}::{{ method.name }}({% for argument in method.arguments %}
+{% if method.final %}final {% endif %}{{method.visibility}} {%if method.static%}static {% endif %}{{ method.parent.name }}::{{ method.name }}({% for argument in method.arguments %}
 {{- argument.type }} 
 {{- argument.byReference ? '&' }} $
 {{- argument.name }}{{ argument.default ? ' = '~argument.default }}
@@ -16,8 +16,15 @@
 {{ method.description|raw }}
 
 {% if method.static %}* This method is **static**.{% endif %}
+
+{% if method.abstract %}* This method is **abstract**.{% endif %}
+
+{% if method.final %}* This method is **final**.{% endif %}
+
 {% if method.deprecated %}* **Warning:** this method is **deprecated**. This means that this method will likely be removed in a future version.
+
 {% endif %}
+
 
 {% if method.arguments is not empty %}
 **Parameters:**

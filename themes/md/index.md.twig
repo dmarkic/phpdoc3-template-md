@@ -1,11 +1,15 @@
-{% import "macros.md.twig" as macros %}
+{% import "include/macros.twig" as macros %}
+{% include "config/config.twig" %}
 {% block content %}
 # {{ project.name|raw }}
 
-This is an automatically generated class documentation for **{{project.name}}**.
+This is an automatically generated documentation for **{{project.name}}**.
 
+{# Gitlab supports automatic table of contents generation #}
+{% if md_flavour == 'gitlab' %}
 # Table of contents
 [[_TOC_]]
+{% endif %}
 
 # Namespaces
 {% for namespace in project.indexes.namespaces|sort((a,b) => a.FullyQualifiedStructuralElementName <=> b.FullyQualifiedStructuralElementName) %}
@@ -18,3 +22,6 @@ This is an automatically generated class documentation for **{{project.name}}**.
 {% endif %}
 {% endfor %}
 {% endblock %}
+
+---
+> Automatically generated from source code comments on {{ "now"|date("Y-m-d") }} using [phpDocumentor](http://www.phpdoc.org/) and [dmarkic/phpdoc3-template-md](https://github.com/dmarkic/phpdoc3-template-md)
