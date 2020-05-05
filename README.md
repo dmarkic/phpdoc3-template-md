@@ -1,2 +1,8 @@
-# phpdoc3-template-md
-phpDocumentor3 MD template 
+# PHPDocumentor3 MarkDown template
+Write something here.
+
+## Installation
+Installation instructions
+## Usage
+Usage instructions
+
