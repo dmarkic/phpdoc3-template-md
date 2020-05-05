@@ -5,7 +5,7 @@ Example created from phpDocumentor 3 MarioisPizzeria example is available in [ex
 
 **Note:** phpDocumentor 3 is in development. Tested with latest v3.0.0-rc.
 
-** Note:** For now it documents only classes and methods. Will add more soon.
+**Note:** For now it documents only classes and methods. Will add more soon.
 
 Inspired by: 
 * https://github.com/evert/phpdoc-md
