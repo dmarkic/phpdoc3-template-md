@@ -1,7 +1,7 @@
 # phpDocumentor 3 MarkDown template
 [phpDocumentor 3 template](https://docs.phpdoc.org/latest/getting-started/changing-the-look-and-feel.html) that generates Markdown documentation.
 
-Example created from phpDocumentor 3 MarioisPizzeria example is available in [example/](example/).
+Example created from phpDocumentor 3 MariosPizzeria example is available in [example/](example/) directory.
 
 **Note:** phpDocumentor 3 is in development. Tested with latest v3.0.0-rc.
 
