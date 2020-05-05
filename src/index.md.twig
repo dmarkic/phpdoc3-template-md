@@ -1,0 +1,20 @@
+{% import "macros.md.twig" as macros %}
+{% block content %}
+# {{ project.name|raw }}
+
+This is an automatically generated class documentation for **{{project.name}}**.
+
+# Table of contents
+[[_TOC_]]
+
+# Namespaces
+{% for namespace in project.indexes.namespaces|sort((a,b) => a.FullyQualifiedStructuralElementName <=> b.FullyQualifiedStructuralElementName) %}
+{% if namespace.classes|length > 0 %}
+## {{ namespace.FullyQualifiedStructuralElementName }}
+### Classes
+{% for class in namespace.classes|sort((a,b) => a.FullyQualifiedStructuralElementName <=> b.FullyQualifiedStructuralElementName) %}
+ - {{ macros.mdClassLink(class) }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endblock %}

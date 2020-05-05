@@ -1,0 +1,8 @@
+{% block content %}
+#### {{ interface.FullyQualifiedStructuralElementName }}
+{{ interface.summary|raw }}
+
+{{ interface.description|raw }}
+{% if interface.parent|length > 0 %}* Parent interface(s): {{ interface.parents | join(', ') }}
+{% endif %}
+{% endblock %}
