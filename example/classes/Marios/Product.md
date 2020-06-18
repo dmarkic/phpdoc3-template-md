@@ -1,16 +1,16 @@
 ---
-title: \Marios\Pizza\Sauce
+title: \Marios\Product
 footer: false
 ---
 
-# Sauce
+# Product
 
 
 
 
 
-* Full name: `\Marios\Pizza\Sauce`
-* This class is marked as **final** and can't be subclassed
+* Full name: `\Marios\Product`
+* Parent interface: [](../../classes.md)
 
 
 

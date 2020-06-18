@@ -1,4 +1,10 @@
+---
+title: \Marios\Pizzeria
+footer: false
+---
+
 # Pizzeria
+
 Entrypoint for this pizza ordering application.
 
 This class provides an interface through which you can order pizza's and pasta's from Mario's Pizzeria.
@@ -7,7 +13,7 @@ We have:
 - American pizzas
 - And real (italian) pizzas
 
-* Full name: \Marios\Pizzeria
+* Full name: `\Marios\Pizzeria`
 * This class is marked as **final** and can't be subclassed
 * This class implements: \JsonSerializable
 
@@ -18,8 +24,8 @@ We have:
 
 
 
-
 ## Methods
+
 ### order
 
 
@@ -120,3 +126,7 @@ public Pizzeria::jsonSerialize(): array
 
 
 ---
+
+
+---
+> Automatically generated from source code comments on 2020-06-18 using [phpDocumentor](http://www.phpdoc.org/) and [dmarkic/phpdoc3-template-md](https://github.com/dmarkic/phpdoc3-template-md)

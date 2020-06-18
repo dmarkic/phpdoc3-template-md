@@ -1,6 +1,10 @@
 {% import "include/macros.twig" as macros %}
-{% include "config/config.twig" %}
 {% block content %}
+---
+title: {{project.name}}
+{% include 'config/frontmatter.twig' %}
+---
+
 # {{ project.name|raw }}
 
 This is an automatically generated documentation for **{{project.name}}**.
@@ -11,17 +15,49 @@ This is an automatically generated documentation for **{{project.name}}**.
 [[_TOC_]]
 {% endif %}
 
-# Namespaces
-{% for namespace in project.indexes.namespaces|sort((a,b) => a.FullyQualifiedStructuralElementName <=> b.FullyQualifiedStructuralElementName) %}
-{% if namespace.classes|length > 0 %}
-## {{ namespace.FullyQualifiedStructuralElementName }}
-### Classes
-{% for class in namespace.classes|sort((a,b) => a.FullyQualifiedStructuralElementName <=> b.FullyQualifiedStructuralElementName) %}
- - {{ macros.mdClassLink(class) }}
-{% endfor %}
-{% endif %}
-{% endfor %}
-{% endblock %}
+## Namespaces
 
----
-> Automatically generated from source code comments on {{ "now"|date("Y-m-d") }} using [phpDocumentor](http://www.phpdoc.org/) and [dmarkic/phpdoc3-template-md](https://github.com/dmarkic/phpdoc3-template-md)
+{% for namespace in project.indexes.namespaces|sort((a,b) => a.FullyQualifiedStructuralElementName <=> b.FullyQualifiedStructuralElementName) %}
+{% if namespace.classes|length > 0 or namespace.traits|length > 0 or namespace.interfaces|length > 0 %}
+
+### {{ namespace.FullyQualifiedStructuralElementName }}
+
+{% if namespace.classes|length > 0 %}
+#### Classes
+
+| Class | Description |
+|---    |---          |
+{% for class in namespace.classes|sort((a,b) => a.FullyQualifiedStructuralElementName <=> b.FullyQualifiedStructuralElementName) %}
+| {{ macros.mdClassLink(class) }} | {{ class.summary|replace({'|': '&#124;'})|nl2br|replace({"\n": "", "\r": "", "\t": ""})|raw }}|
+{% endfor %}{# for class #}
+{% endif %}{# if classes.length #}
+
+{% if namespace.traits|length > 0 %}
+
+#### Traits
+
+| Trait | Description |
+|---    |---          |
+{% for trait in namespace.traits|sort((a,b) => a.FullyQualifiedStructuralElementName <=> b.FullyQualifiedStructuralElementName) %}
+| {{ macros.mdClassLink(trait) }} | {{ trait.summary|replace({'|': '&#124;'})|nl2br|replace({"\n": "", "\r": "", "\t": ""})|raw }}|
+{% endfor %}{# for trait #}
+
+{% endif %}{# if traits #}
+
+{% if namespace.interfaces|length > 0 %}
+
+#### Interfaces
+
+| Interface | Description |
+|---    |---          |
+{% for interface in namespace.interfaces|sort((a,b) => a.FullyQualifiedStructuralElementName <=> b.FullyQualifiedStructuralElementName) %}
+| {{ macros.mdClassLink(interface) }} | {{ interface.summary|replace({'|': '&#124;'})|nl2br|replace({"\n": "", "\r": "", "\t": ""})|raw }}|
+{% endfor %}{# for interace #}
+
+{% endif %}{# if interfaces #}
+
+{% endif %}{# if classes, traits, interfaces length #}
+{% endfor %}{# for namespace #}
+
+{% include 'config/footer.md.twig' %}
+{% endblock %}
